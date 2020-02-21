@@ -3,7 +3,7 @@ A Flutter package to create a beautiful extended button which can expand and shr
 
 [![pub package](https://img.shields.io/pub/v/extended_button.svg)](https://pub.dev/packages/extended_button)
 
-#### Shrink state
+#### Shrunk state
 <img src="https://github.com/AyushBherwani1998/extended_button/blob/master/extended_closed.png" width=350>
 
 
