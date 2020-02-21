@@ -2,6 +2,32 @@ library extended_button;
 
 import 'package:flutter/material.dart';
 
+/// Creates an Extended Button Widget
+/// An extended button widget provides and expanding button whenever the button is
+/// clicked.
+///
+/// [topRightIcon], [topLeftIcon], [bottomLeftIcon], [bottomRightIcon] icons are used
+/// whenever the button is expanded.
+///
+/// [opened] is define whether the button should be expanded initially or not. By
+/// default the value of [opened] is false
+///
+/// [onClickBottomLeft], [onClickBottomRight], [onClickTopLeft], [onClickTopRight] are
+/// the functions called whenever the icons are pressed. If you don't want to trigger
+/// function you can pass null.
+///
+/// [size] parameter defines the size of the [ExtendedButton]. The size of Extended
+/// Button should be greater than 80.
+///
+/// [curve] parameter is used to define the [Curve] for expanded animation. By
+/// default value of [curve] is [Curves.easeIn].
+///
+/// [iconColor] is used to defined the color for icons for both expand and shrink state.
+/// By default value of [iconColor] is [Colors.white]
+///
+/// [boxColor] is used to define the color for the Extended Button. By default value of
+/// [boxColor] is [Colors.black]
+
 class ExtendedButton extends StatefulWidget {
   final IconData topRightIcon, topLeftIcon, bottomRightIcon, bottomLeftIcon;
   final bool opened;
