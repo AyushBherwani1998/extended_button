@@ -1,5 +1,5 @@
 ## About
-A Flutter package to have beautiful extended button in your Flutter application.
+A Flutter package to create a beautiful extended button which can expand and shrink whenever the user clicks on the button. 
 
 [![pub package](https://img.shields.io/pub/v/extended_button.svg)](https://pub.dev/packages/extended_button)
 
@@ -59,4 +59,4 @@ void main() => runApp(MaterialApp(
 Please file feature requests and bugs at the [issue tracker](https://github.com/AyushBherwani1998/extended_button/issues)
 
 ## Contributing
-We would love to see you contribute to extended. Feel free to send pull request for new buttons or submit a suggestion. 
+We would love to see you contribute to extended_button. Feel free to send a pull request to add new buttons to the package.
