@@ -5,12 +5,12 @@ A Flutter package to create a beautiful extended button which can expand and shr
 
 #### Shrunk state
 
-<img src="https://github.com/AyushBherwani1998/extended_button/blob/master/extended_closed.png" width=350>
+![Extended Closed](extended_closed.png)
 
 
 #### Expanded state
 
-<img src="extended_open.png" width=350>
+![Extended Opend](extended_open.png)
 
 ## Usage
 
