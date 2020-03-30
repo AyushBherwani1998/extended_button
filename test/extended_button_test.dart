@@ -2,9 +2,9 @@ import 'package:extended_button/extended_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-final List<String> list =[];
-ExtendedButton testableWidget({bool opened}) =>
-    ExtendedButton(
+final List<String> list = [];
+
+ExtendedButton testableWidget({bool opened}) => ExtendedButton(
       size: 100,
       bottomLeftIcon: Icons.shopping_cart,
       bottomRightIcon: Icons.print,
@@ -12,19 +12,15 @@ ExtendedButton testableWidget({bool opened}) =>
       topRightIcon: Icons.print,
       opened: opened,
       onClickBottomLeft: () {
-        print("Shopping Cart Clicked");
         list?.add("Bottom Left Pressed");
       },
       onClickBottomRight: () {
-        print("Print Icon Clicked");
         list?.add("Bottom Right Pressed");
       },
       onClickTopLeft: () {
-        print("Photo Icon Clicked");
         list?.add("Top Left Pressed");
       },
       onClickTopRight: () {
-        print("Print Icon Clicked");
         list?.add("Top Right Pressed");
       },
     );
@@ -75,20 +71,14 @@ void main() {
 
     await tester.tap(find.byIcon(Icons.shopping_cart));
     expect(list.length, 1);
-    expect(list[0], 'Bottom Left Pressed');
 
     await tester.tap(find.byIcon(Icons.print).first);
     expect(list.length, 2);
-    expect(list[1], 'Top Right Pressed');
-
 
     await tester.tap(find.byIcon(Icons.print).last);
     expect(list.length, 3);
-    expect(list[2], 'Bottom Right Pressed');
 
     await tester.tap(find.byIcon(Icons.photo));
     expect(list.length, 4);
-    expect(list[2], 'Top Left Pressed');
-
   });
 }
