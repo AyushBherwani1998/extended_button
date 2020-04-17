@@ -10,6 +10,7 @@ void main() => runApp(MaterialApp(
           alignment: Alignment.center,
           child: ExtendedButton(
             size: 100,
+            isRounded: false,
             bottomLeftIcon: Icons.shopping_cart,
             bottomRightIcon: Icons.print,
             topLeftIcon: Icons.photo,

@@ -27,10 +27,14 @@ import 'package:flutter/material.dart';
 ///
 /// [boxColor] is used to define the color for the Extended Button. By default value of
 /// [boxColor] is [Colors.black]
+///
+/// [isRounded] is used to define the Border Radius for the Extended Button. By default,
+/// the value of [isRounded] is false. If the user wants to change the Border Radius, then
+/// he/she can change the value to true which is by default 5.
 
 class ExtendedButton extends StatefulWidget {
   final IconData topRightIcon, topLeftIcon, bottomRightIcon, bottomLeftIcon;
-  final bool opened;
+  final bool opened, isRounded;
   final Curve curve;
   final Function onClickTopRight,
       onClickTopLeft,
@@ -39,21 +43,21 @@ class ExtendedButton extends StatefulWidget {
   final double size;
   final Color iconColor, boxColor;
 
-  const ExtendedButton(
-      {Key key,
-      this.opened = false,
-      @required this.size,
-      this.iconColor = Colors.white,
-      this.boxColor = Colors.black,
-      @required this.topRightIcon,
-      @required this.topLeftIcon,
-      @required this.bottomRightIcon,
-      @required this.bottomLeftIcon,
-      @required this.onClickTopRight,
-      @required this.onClickTopLeft,
-      @required this.onClickBottomLeft,
-      @required this.onClickBottomRight,
-      this.curve = Curves.easeIn})
+  const ExtendedButton({Key key,
+    this.opened = false,
+    this.isRounded = false,
+    @required this.size,
+    this.iconColor = Colors.white,
+    this.boxColor = Colors.black,
+    @required this.topRightIcon,
+    @required this.topLeftIcon,
+    @required this.bottomRightIcon,
+    @required this.bottomLeftIcon,
+    @required this.onClickTopRight,
+    @required this.onClickTopLeft,
+    @required this.onClickBottomLeft,
+    @required this.onClickBottomRight,
+    this.curve = Curves.easeIn})
       : assert(iconColor != null, "Icon color cannot be null"),
         assert(boxColor != null, "Box color can not be null"),
         assert(topRightIcon != null, "Top right Icon can not be null"),
@@ -106,7 +110,7 @@ class _ExtendedButtonState extends State<ExtendedButton> {
                           ? widget.boxColor.withOpacity(0.6)
                           : widget.boxColor,
                       borderRadius: BorderRadius.circular(
-                          opened ? dimensions.calculateDimension(32) : 0)),
+                          opened ? dimensions.calculateDimension(32) : widget.isRounded ? dimensions.calculateDimension(5) : 0)),
                   child: Container(),
                 ),
               ),
@@ -186,24 +190,24 @@ class _ExtendedButtonState extends State<ExtendedButton> {
 
 class SquareBox extends StatefulWidget {
   final IconData icon;
-  final bool opened;
+  final bool opened, isRounded;
   final Function onClick;
   final double closedLeft, openedLeft, closedTop, openedTop, size;
   final Color iconColor, boxColor;
   final Curve curve;
 
-  SquareBox(
-      {this.icon,
-      this.opened,
-      this.onClick,
-      this.closedLeft,
-      this.openedLeft,
-      this.closedTop,
-      this.openedTop,
-      this.iconColor,
-      this.boxColor,
-      this.size,
-      this.curve});
+  SquareBox({this.icon,
+    this.isRounded = false,
+    this.opened,
+    this.onClick,
+    this.closedLeft,
+    this.openedLeft,
+    this.closedTop,
+    this.openedTop,
+    this.iconColor,
+    this.boxColor,
+    this.size,
+    this.curve});
 
   @override
   _SquareBoxState createState() => _SquareBoxState();
@@ -245,7 +249,7 @@ class _SquareBoxState extends State<SquareBox> {
         decoration: BoxDecoration(
             color: widget.boxColor,
             borderRadius: BorderRadius.circular(
-                widget.opened ? dimensions.calculateDimension(5) : 0)),
+                widget.opened ? dimensions.calculateDimension(5) : widget.isRounded ? dimensions.calculateDimension(5) : 0)),
       ),
     );
   }
