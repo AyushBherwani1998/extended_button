@@ -67,3 +67,12 @@ Please file feature requests and bugs at the [issue tracker](https://github.com/
 
 ## Contributing
 We would love to see you contribute to extended_button. Feel free to send a pull request to add new buttons to the package.
+
+## Contributors 
+
+A special thanks to all the contributors.
+<table>
+ <tr>
+   <td align="center"><a href="https://github.com/AyushBherwani1998"><img src="https://avatars1.githubusercontent.com/u/34301187" width="64px;" alt=""/><br /><sub><b>Ayush Bherwani</b></sub></a><br /></td>
+ </tr>
+</table>
