@@ -74,5 +74,6 @@ A special thanks to all the contributors.
 <table>
  <tr>
    <td align="center"><a href="https://github.com/AyushBherwani1998"><img src="https://avatars1.githubusercontent.com/u/34301187" width="64px;" alt=""/><br /><sub><b>Ayush Bherwani</b></sub></a><br /></td>
+   <td align="center"><a href="https://github.com/pb-10"><img src="https://avatars2.githubusercontent.com/u/43945352" width="64px;" alt=""/><br /><sub><b>Pranit Brahmbhatt</b></sub></a><br /></td>
  </tr>
 </table>

@@ -27,10 +27,14 @@ import 'package:flutter/material.dart';
 ///
 /// [boxColor] is used to define the color for the Extended Button. By default value of
 /// [boxColor] is [Colors.black]
+///
+/// [isRounded] is used to define the borderRadius for the ExtendedButton when button is
+/// in the shrunk state. By default, the value of [isRounded] is false. When isRounded is true,
+/// the value of borderRadius is 5.0.
 
 class ExtendedButton extends StatefulWidget {
   final IconData topRightIcon, topLeftIcon, bottomRightIcon, bottomLeftIcon;
-  final bool opened;
+  final bool opened, isRounded;
   final Curve curve;
   final Function onClickTopRight,
       onClickTopLeft,
@@ -42,6 +46,7 @@ class ExtendedButton extends StatefulWidget {
   const ExtendedButton(
       {Key key,
       this.opened = false,
+      this.isRounded = false,
       @required this.size,
       this.iconColor = Colors.white,
       this.boxColor = Colors.black,
@@ -55,6 +60,7 @@ class ExtendedButton extends StatefulWidget {
       @required this.onClickBottomRight,
       this.curve = Curves.easeIn})
       : assert(iconColor != null, "Icon color cannot be null"),
+        assert(isRounded != null),
         assert(boxColor != null, "Box color can not be null"),
         assert(topRightIcon != null, "Top right Icon can not be null"),
         assert(topLeftIcon != null, "Top left Icon can not be null"),
@@ -105,13 +111,17 @@ class _ExtendedButtonState extends State<ExtendedButton> {
                       color: opened
                           ? widget.boxColor.withOpacity(0.6)
                           : widget.boxColor,
-                      borderRadius: BorderRadius.circular(
-                          opened ? dimensions.calculateDimension(32) : 0)),
+                      borderRadius: BorderRadius.circular(opened
+                          ? dimensions.calculateDimension(32)
+                          : widget.isRounded
+                              ? dimensions.calculateDimension(5)
+                              : 0)),
                   child: Container(),
                 ),
               ),
               SquareBox(
                   opened: opened,
+                  isRounded: widget.isRounded,
                   size: widget.size,
                   curve: widget.curve,
                   icon: widget.topLeftIcon,
@@ -124,6 +134,7 @@ class _ExtendedButtonState extends State<ExtendedButton> {
                   onClick: widget.onClickTopLeft),
               SquareBox(
                   opened: opened,
+                  isRounded: widget.isRounded,
                   size: widget.size,
                   curve: widget.curve,
                   iconColor: widget.iconColor,
@@ -136,6 +147,7 @@ class _ExtendedButtonState extends State<ExtendedButton> {
                   onClick: widget.onClickTopRight),
               SquareBox(
                   opened: opened,
+                  isRounded: widget.isRounded,
                   size: widget.size,
                   curve: widget.curve,
                   iconColor: widget.iconColor,
@@ -148,6 +160,7 @@ class _ExtendedButtonState extends State<ExtendedButton> {
                   onClick: widget.onClickBottomRight),
               SquareBox(
                   opened: opened,
+                  isRounded: widget.isRounded,
                   size: widget.size,
                   curve: widget.curve,
                   iconColor: widget.iconColor,
@@ -186,7 +199,7 @@ class _ExtendedButtonState extends State<ExtendedButton> {
 
 class SquareBox extends StatefulWidget {
   final IconData icon;
-  final bool opened;
+  final bool opened, isRounded;
   final Function onClick;
   final double closedLeft, openedLeft, closedTop, openedTop, size;
   final Color iconColor, boxColor;
@@ -194,6 +207,7 @@ class SquareBox extends StatefulWidget {
 
   SquareBox(
       {this.icon,
+      this.isRounded,
       this.opened,
       this.onClick,
       this.closedLeft,
@@ -244,8 +258,9 @@ class _SquareBoxState extends State<SquareBox> {
         ),
         decoration: BoxDecoration(
             color: widget.boxColor,
-            borderRadius: BorderRadius.circular(
-                widget.opened ? dimensions.calculateDimension(5) : 0)),
+            borderRadius: BorderRadius.circular(widget.opened
+                ? dimensions.calculateDimension(5)
+                : widget.isRounded ? dimensions.calculateDimension(5) : 0)),
       ),
     );
   }
