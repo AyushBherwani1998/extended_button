@@ -26,11 +26,11 @@ import 'package:flutter/material.dart';
 /// By default value of [iconColor] is [Colors.white]
 ///
 /// [boxColor] is used to define the color for the Extended Button. By default value of
-/// [boxColor] is [Colors.black]
+/// [boxColor] is [Colors.black
 ///
-/// [isRounded] is used to define the Border Radius for the Extended Button. By default,
-/// the value of [isRounded] is false. If the user wants to change the Border Radius, then
-/// he/she can change the value to true which is by default 5.
+/// [isRounded] is used to define the borderRadius for the ExtendedButton when button is
+/// in the shrunk state. By default, the value of [isRounded] is false. When isRounded is true,
+/// the value of borderRadius is 5.0.
 
 class ExtendedButton extends StatefulWidget {
   final IconData topRightIcon, topLeftIcon, bottomRightIcon, bottomLeftIcon;
@@ -59,6 +59,7 @@ class ExtendedButton extends StatefulWidget {
     @required this.onClickBottomRight,
     this.curve = Curves.easeIn})
       : assert(iconColor != null, "Icon color cannot be null"),
+        assert(isRounded != null),
         assert(boxColor != null, "Box color can not be null"),
         assert(topRightIcon != null, "Top right Icon can not be null"),
         assert(topLeftIcon != null, "Top left Icon can not be null"),
@@ -197,7 +198,7 @@ class SquareBox extends StatefulWidget {
   final Curve curve;
 
   SquareBox({this.icon,
-    this.isRounded = false,
+    this.isRounded,
     this.opened,
     this.onClick,
     this.closedLeft,
