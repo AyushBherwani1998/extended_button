@@ -43,21 +43,22 @@ class ExtendedButton extends StatefulWidget {
   final double size;
   final Color iconColor, boxColor;
 
-  const ExtendedButton({Key key,
-    this.opened = false,
-    this.isRounded = false,
-    @required this.size,
-    this.iconColor = Colors.white,
-    this.boxColor = Colors.black,
-    @required this.topRightIcon,
-    @required this.topLeftIcon,
-    @required this.bottomRightIcon,
-    @required this.bottomLeftIcon,
-    @required this.onClickTopRight,
-    @required this.onClickTopLeft,
-    @required this.onClickBottomLeft,
-    @required this.onClickBottomRight,
-    this.curve = Curves.easeIn})
+  const ExtendedButton(
+      {Key key,
+      this.opened = false,
+      this.isRounded = false,
+      @required this.size,
+      this.iconColor = Colors.white,
+      this.boxColor = Colors.black,
+      @required this.topRightIcon,
+      @required this.topLeftIcon,
+      @required this.bottomRightIcon,
+      @required this.bottomLeftIcon,
+      @required this.onClickTopRight,
+      @required this.onClickTopLeft,
+      @required this.onClickBottomLeft,
+      @required this.onClickBottomRight,
+      this.curve = Curves.easeIn})
       : assert(iconColor != null, "Icon color cannot be null"),
         assert(isRounded != null),
         assert(boxColor != null, "Box color can not be null"),
@@ -110,13 +111,17 @@ class _ExtendedButtonState extends State<ExtendedButton> {
                       color: opened
                           ? widget.boxColor.withOpacity(0.6)
                           : widget.boxColor,
-                      borderRadius: BorderRadius.circular(
-                          opened ? dimensions.calculateDimension(32) : widget.isRounded ? dimensions.calculateDimension(5) : 0)),
+                      borderRadius: BorderRadius.circular(opened
+                          ? dimensions.calculateDimension(32)
+                          : widget.isRounded
+                              ? dimensions.calculateDimension(5)
+                              : 0)),
                   child: Container(),
                 ),
               ),
               SquareBox(
                   opened: opened,
+                  isRounded: widget.isRounded,
                   size: widget.size,
                   curve: widget.curve,
                   icon: widget.topLeftIcon,
@@ -129,6 +134,7 @@ class _ExtendedButtonState extends State<ExtendedButton> {
                   onClick: widget.onClickTopLeft),
               SquareBox(
                   opened: opened,
+                  isRounded: widget.isRounded,
                   size: widget.size,
                   curve: widget.curve,
                   iconColor: widget.iconColor,
@@ -141,6 +147,7 @@ class _ExtendedButtonState extends State<ExtendedButton> {
                   onClick: widget.onClickTopRight),
               SquareBox(
                   opened: opened,
+                  isRounded: widget.isRounded,
                   size: widget.size,
                   curve: widget.curve,
                   iconColor: widget.iconColor,
@@ -153,6 +160,7 @@ class _ExtendedButtonState extends State<ExtendedButton> {
                   onClick: widget.onClickBottomRight),
               SquareBox(
                   opened: opened,
+                  isRounded: widget.isRounded,
                   size: widget.size,
                   curve: widget.curve,
                   iconColor: widget.iconColor,
@@ -197,18 +205,19 @@ class SquareBox extends StatefulWidget {
   final Color iconColor, boxColor;
   final Curve curve;
 
-  SquareBox({this.icon,
-    this.isRounded,
-    this.opened,
-    this.onClick,
-    this.closedLeft,
-    this.openedLeft,
-    this.closedTop,
-    this.openedTop,
-    this.iconColor,
-    this.boxColor,
-    this.size,
-    this.curve});
+  SquareBox(
+      {this.icon,
+      this.isRounded,
+      this.opened,
+      this.onClick,
+      this.closedLeft,
+      this.openedLeft,
+      this.closedTop,
+      this.openedTop,
+      this.iconColor,
+      this.boxColor,
+      this.size,
+      this.curve});
 
   @override
   _SquareBoxState createState() => _SquareBoxState();
@@ -249,8 +258,9 @@ class _SquareBoxState extends State<SquareBox> {
         ),
         decoration: BoxDecoration(
             color: widget.boxColor,
-            borderRadius: BorderRadius.circular(
-                widget.opened ? dimensions.calculateDimension(5) : widget.isRounded ? dimensions.calculateDimension(5) : 0)),
+            borderRadius: BorderRadius.circular(widget.opened
+                ? dimensions.calculateDimension(5)
+                : widget.isRounded ? dimensions.calculateDimension(5) : 0)),
       ),
     );
   }
