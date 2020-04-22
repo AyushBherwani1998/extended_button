@@ -1,6 +1,6 @@
 name: extended_button
 description: A Flutter package to create a beautiful extended button which can expand and shrink whenever the user clicks on the button.
-version: 0.0.1
+version: 0.1.0
 author: Ayush Bherwani <ayush.bherwani1998@gmail.com>
 homepage: https://github.com/AyushBherwani1998/extended_button
 
